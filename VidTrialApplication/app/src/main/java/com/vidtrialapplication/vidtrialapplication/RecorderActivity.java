@@ -1,37 +1,24 @@
 package com.vidtrialapplication.vidtrialapplication;
 
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-
-import com.vidtrialapplication.onclickutils.VidAppOnClickListener;
 
 
-public class MainActivity extends ActionBarActivity {
-
-    Button recordVideoButton;
-    Button playbackVideoButton;
+public class RecorderActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //Reference Buttons
-        recordVideoButton = (Button) findViewById(R.id.recordVideo);
-        playbackVideoButton = (Button) findViewById(R.id.playbackVideo);
-
-        recordVideoButton.setOnClickListener(new VidAppOnClickListener(this));
-        playbackVideoButton.setOnClickListener(new VidAppOnClickListener(this));
+        setContentView(R.layout.activity_recorder);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_recorder, menu);
         return true;
     }
 
