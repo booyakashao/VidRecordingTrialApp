@@ -1,5 +1,7 @@
 package com.vidtrialapplication.onclickutils;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -64,5 +66,15 @@ public class VidUtilsMisscelaneous {
         return mediaFile;
     }
 
+
+    public static boolean checkCameraHardware(Context context) {
+        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
 
 }

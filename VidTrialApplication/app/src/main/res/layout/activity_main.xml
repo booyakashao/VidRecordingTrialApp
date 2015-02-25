@@ -22,4 +22,14 @@
         android:id="@+id/playbackVideo"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You must have a camera to run this app. "
+        android:id="@+id/cameraNotificationMessage"
+        android:layout_above="@+id/playbackVideo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp" />
+
 </RelativeLayout>
