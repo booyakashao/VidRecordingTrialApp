@@ -2,6 +2,8 @@ package com.vidtrialapplication.onclickutils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.util.Log;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by wengu on 2/22/15.
@@ -17,6 +20,7 @@ public class VidUtilsMisscelaneous {
 
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
+    private static final String LogTAG = "VidUtilitiesLog";
 
     public static Uri getOutputMediaFileUri(int type){
         return Uri.fromFile(getOutputMediaFile(type));
@@ -77,4 +81,54 @@ public class VidUtilsMisscelaneous {
         }
     }
 
+     //For SDK 21 and higher which means lollipop and higher
+    public static void getCameraInstance(Context context) {
+        String[] cameraList = new String[1];
+        CameraManager manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+
+
+        try {
+            //cameraList = manager.getCameraIdList();
+        } catch(Exception e) {
+            Log.e(LogTAG, "Unable to get camera list");
+            Log.e(LogTAG, e.getMessage());
+            e.printStackTrace();
+        }
+
+        for(String currentCamera : cameraList) {
+            Log.i(LogTAG, currentCamera);
+        }
+
+    }
+
+
+    //for all sdk under 21
+    public static Camera getCameraInstance() {
+        Camera currentCamera = null;
+
+        try {
+            currentCamera = Camera.open(0);
+        } catch(Exception e) {
+            Log.e(LogTAG, "Unable to get camera list");
+            Log.e(LogTAG, e.getMessage());
+            e.printStackTrace();
+        }
+
+
+        return currentCamera;
+    }
+
+    public static Camera.Size getMaxCameraSize(List<Camera.Size> cameraPreviewSizes) {
+        Camera.Size largestCameraSize = null;
+
+        for(Camera.Size currentCameraSize : cameraPreviewSizes) {
+            if(largestCameraSize == null) {
+                largestCameraSize = currentCameraSize;
+            } else if(currentCameraSize.width > largestCameraSize.width || currentCameraSize.height > largestCameraSize.height) {
+                largestCameraSize = currentCameraSize;
+            }
+        }
+
+        return largestCameraSize;
+    }
 }

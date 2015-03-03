@@ -11,17 +11,17 @@
         android:layout_height="wrap_content"
         android:text="Record Video"
         android:id="@+id/recordVideo"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="97dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Playback Video"
         android:id="@+id/playbackVideo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,5 +31,15 @@
         android:layout_above="@+id/playbackVideo"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="33dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Record Video"
+        android:id="@+id/customRecordVideo"
+        android:layout_above="@+id/recordVideo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="89dp" />
 
 </RelativeLayout>

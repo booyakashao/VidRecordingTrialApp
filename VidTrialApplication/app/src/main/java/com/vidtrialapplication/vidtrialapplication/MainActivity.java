@@ -1,5 +1,6 @@
 package com.vidtrialapplication.vidtrialapplication;
 
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import com.vidtrialapplication.onclickutils.VidUtilsMisscelaneous;
 
 public class MainActivity extends ActionBarActivity {
 
+    Button customRecordButton;
     Button recordVideoButton;
     Button playbackVideoButton;
     TextView missingCameraNotification;
@@ -24,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //Reference Buttons
+        customRecordButton = (Button) findViewById(R.id.customRecordVideo);
         recordVideoButton = (Button) findViewById(R.id.recordVideo);
         playbackVideoButton = (Button) findViewById(R.id.playbackVideo);
 
@@ -32,13 +35,17 @@ public class MainActivity extends ActionBarActivity {
         missingCameraNotification.setVisibility(View.GONE);
 
 
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+
         //Check if there is a camera
         if(VidUtilsMisscelaneous.checkCameraHardware(this)) {
 
             //Add the proper action listeners
+            customRecordButton.setOnClickListener(new VidAppOnClickListener(this));
             recordVideoButton.setOnClickListener(new VidAppOnClickListener(this));
             playbackVideoButton.setOnClickListener(new VidAppOnClickListener(this));
         } else {
+            customRecordButton.setVisibility(View.GONE);
             recordVideoButton.setVisibility(View.GONE);
             playbackVideoButton.setVisibility(View.GONE);
 

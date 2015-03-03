@@ -8,4 +8,5 @@
     <string name="title_activity_recorder">RecorderActivity</string>
     <string name="title_activity_playback">PlaybackActivity</string>
     <string name="title_activity_temp_recorder">TempRecorderActivity</string>
+    <string name="title_activity_custom_video_recorder">customVideoRecorderActivity</string>
 </resources>

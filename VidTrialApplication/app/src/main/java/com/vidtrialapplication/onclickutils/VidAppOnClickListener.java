@@ -3,6 +3,7 @@ package com.vidtrialapplication.onclickutils;
 import android.content.Intent;
 import android.view.View;
 
+import com.vidtrialapplication.vidtrialapplication.CustomVideoRecorderActivity;
 import com.vidtrialapplication.vidtrialapplication.MainActivity;
 import com.vidtrialapplication.vidtrialapplication.PlaybackActivity;
 import com.vidtrialapplication.vidtrialapplication.R;
@@ -29,6 +30,10 @@ public class VidAppOnClickListener implements View.OnClickListener {
             case R.id.playbackVideo:
                 Intent playbackVideoIntent = new Intent(caller, PlaybackActivity.class);
                 caller.startActivity(playbackVideoIntent);
+                break;
+            case R.id.customRecordVideo:
+                Intent customVideoRecorderIntent = new Intent(caller, CustomVideoRecorderActivity.class);
+                caller.startActivity(customVideoRecorderIntent);
                 break;
         }
     }
