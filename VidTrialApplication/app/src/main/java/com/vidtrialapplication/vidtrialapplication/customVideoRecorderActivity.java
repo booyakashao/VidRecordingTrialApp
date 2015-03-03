@@ -3,10 +3,8 @@ package com.vidtrialapplication.vidtrialapplication;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.vidtrialapplication.CameraLayouts.CameraPreview;
 import com.vidtrialapplication.onclickutils.VidUtilsMisscelaneous;
@@ -22,6 +20,7 @@ public class CustomVideoRecorderActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_video_recorder);
 
+        /*
         // Create an instance of camera
         mCamera = VidUtilsMisscelaneous.getCameraInstance();
 
@@ -33,7 +32,9 @@ public class CustomVideoRecorderActivity extends ActionBarActivity {
             FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
             preview.addView(mPreview);
         }
+        */
 
+        VidUtilsMisscelaneous.getCameraInstance(this.getApplicationContext());
     }
 
 

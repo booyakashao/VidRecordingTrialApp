@@ -3,10 +3,13 @@ package com.vidtrialapplication.onclickutils;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
+import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+
+import com.vidtrialapplication.CameraLayouts.CameraPreview2;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -88,7 +91,14 @@ public class VidUtilsMisscelaneous {
 
 
         try {
-            //cameraList = manager.getCameraIdList();
+            cameraList = manager.getCameraIdList();
+
+            for(String id : cameraList) {
+                CameraCharacteristics ch = manager.getCameraCharacteristics(id);
+                if(ch.get(CameraCharacteristics.LENS_FACING) == CameraCharacteristics.LENS_FACING_BACK) {
+                    manager.openCamera(id, new CameraPreview2(), null);
+                }
+            }
         } catch(Exception e) {
             Log.e(LogTAG, "Unable to get camera list");
             Log.e(LogTAG, e.getMessage());
