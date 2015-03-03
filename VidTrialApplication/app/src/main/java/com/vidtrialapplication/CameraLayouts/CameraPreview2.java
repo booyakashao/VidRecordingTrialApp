@@ -20,11 +20,11 @@ public class CameraPreview2 extends CameraDevice.StateCallback {
 
     @Override
     public void onDisconnected(CameraDevice camera) {
-
+        camera.close();
     }
 
     @Override
     public void onError(CameraDevice camera, int error) {
-
+        camera.close();
     }
 }
